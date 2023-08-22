@@ -1,6 +1,6 @@
 import { createWebHistory,createRouter } from "vue-router"
 import Login from "@/components/Login.vue";
-import Home from "@/components/Home.vue";
+
 import FrontPage from "@/components/FrontPage.vue";
 import MyTasks from "@/components/MyTasks.vue";
 import SignUp from "@/components/SignUp.vue";
@@ -10,11 +10,11 @@ import Dashboard from "@/components/Dashboard.vue"
 
 const routes=[
     {path:'/',name:'FrontPage',component:FrontPage},
-    {path:'/Login',name:'Login',component:Login,
+    {path:'/login',name:'Login',component:Login,
 
     },
-    {path:'/SignUp',name:'SignUp',component:SignUp},
-    {path:'/MyTasks',
+    {path:'/sign-up',name:'SignUp',component:SignUp},
+    {path:'/my-tasks',
     name:'MyTasks',
     component:MyTasks,
     meta:{
@@ -22,17 +22,17 @@ const routes=[
     },
     },
    
-    {path:'/Analytics',name:'Analytics',component:Analytics,
+    {path:'/analytics',name:'Analytics',component:Analytics,
     meta:{
         requiresAuth:true,
     },
     },
-    {path:'/Dashboard',name:'Dashboard',component:Dashboard,
+    {path:'/dashboard',name:'Dashboard',component:Dashboard,
     meta:{
         requiresAuth:true,
     },
     },
-    {path:'/Home',name:'Home',component:Home}
+    
 ]
 
 
@@ -43,21 +43,25 @@ const router=createRouter({
 });
 router.beforeEach((to, from, next) => {
    
+  const authToken = JSON.parse(localStorage.getItem('loggedInUser'));
     if (to.matched.some(record => record.meta.requiresAuth)) {
       console.log('before entering');
-      const authToken = JSON.parse(localStorage.getItem('loggedInUser'));
       console.log('authToken',authToken);
+
       if (!authToken) {
         // Redirect to the login page or another appropriate route
         console.log('redirecting to login page');
-        next('/');
+        next('/login');
       } else {
         console.log('User is authenticated');
-        next(); // User is authenticated, proceed with navigation
+        next();
       }
     } else {
         console.log('Route doesnt require');
-      next(); // Route doesn't require authentication, proceed with navigation
+        if(authToken && ["Login", "SignUp"].includes(to.name)){
+          next('/dashboard');
+        }
+        next(); // Route doesn't require authentication, proceed with navigation
     }
   });
 export default router;

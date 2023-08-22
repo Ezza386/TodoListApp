@@ -4,15 +4,20 @@
 </div>
   <div>
     <div class="top-buttons" >
-      <el-button   class="custom-button2  " type="default">  
+      <el-button v-if="!loggedIn"  class="custom-button2  " type="default">  
        <span class="custom-button2">
-       <router-link to="/SignUp">Get it Now</router-link>
+       <router-link to="/sign-up">Get it Now</router-link>
        </span> 
       </el-button>
-      <el-button class="custom-button" >
+      <el-button v-if="!loggedIn" class="custom-button" >
         <span class="custom-button">
-          <router-link to="/Login">Login</router-link>
+          <router-link to="/login">Login</router-link>
           </span>
+      </el-button>
+      <el-button v-if="loggedIn"  class="custom-button2  " type="default" >  
+           <span class="custom-button2">
+           <router-link to="/dashboard">Dashboard</router-link>
+           </span> 
       </el-button>
     </div>
     <div class="background-image">
@@ -28,11 +33,9 @@
   
   <script setup>
   import {ref,onMounted } from 'vue';
-  const Logout=()=>{
-    localStorage.removeItem('loggedInUser');
-  }
+  const loggedIn=JSON.parse(localStorage.getItem('loggedInUser'));
   onMounted(()=>{
-    Logout();
+    
   });
   </script>
   

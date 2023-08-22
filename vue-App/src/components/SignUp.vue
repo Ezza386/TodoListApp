@@ -62,7 +62,7 @@
         <el-form-item>
           <el-button type="primary" native-type="submit" >Register</el-button>
        
-          <span class="member" style="display: flex;">  Already a member?  <router-link class="nav-link" to="/Login" style="color: black;">Login</router-link></span>
+          <span class="member" style="display: flex;">  Already a member?  <router-link class="nav-link" to="/login" style="color: black;">Login</router-link></span>
     
         </el-form-item>
 

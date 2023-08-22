@@ -28,20 +28,20 @@
         <span class="user-name">  {{ loggedInUserFirstName }}</span>
         <el-menu-item index="1">
 
-          <router-link to="/Home">
+          <router-link to="/">
             <el-icon  class="menu-item-text"><House /></el-icon>
             <span  class="menu-item-text">Home</span>
           </router-link>
           </el-menu-item>
           <el-menu-item index="2">
-            <router-link to="/MyTasks">
+            <router-link to="/my-tasks">
               <el-icon><CircleCheckFilled /></el-icon>
             <span>Add Todo</span>
             </router-link>
             
           </el-menu-item>
           <el-menu-item index="2">
-            <router-link to="/Dashboard">
+            <router-link to="/dashboard">
             <el-icon><Menu /></el-icon>
 
             <span>Dashboard</span>
@@ -49,18 +49,22 @@
           </el-menu-item>
           <el-menu-item-group title="Reporting">
               <el-menu-item index="3-1" >
-            <router-link to="/Analytics">
+            <router-link to="/analytics">
             <el-icon><Histogram /></el-icon>
             <span>Portfolios</span>
           </router-link>
           </el-menu-item>
           </el-menu-item-group>
-          <el-menu-item index="4">
-            <router-link to="/">
+          <router-link to="/">
+            <el-menu-item index="4">
+              <div @click="Logout">
             <el-icon><Back /></el-icon>
-            <span>Logout</span>
+            <el-button class="change-logout">Logout</el-button>
+          </div>
+</el-menu-item>
           </router-link>
-          </el-menu-item>
+         
+
         </el-menu>
       </div>
       </el-col>
@@ -95,6 +99,8 @@
   
 <script setup>
 import { ref, onMounted } from 'vue';  
+import { useRouter, useRoute } from 'vue-router';
+  const router = useRouter();
 const tasks = ref([]);
 const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
 const loggedInUserFirstName = ref(loggedInUser ? loggedInUser.fname : '');
@@ -104,8 +110,16 @@ const toggleNavbar = () => {
   
   console.log('Navbar is open:', isNavbarOpen.value); 
 };
+const Logout=()=>{
+   const logout= localStorage.removeItem('loggedInUser');
+   if(logout){
+    router.push('/');
+   }
+   
+  };
   onMounted(() => {
     loadTasksFromLocalStorage();
+   // Logout();
   });
   
   const loadTasksFromLocalStorage = () => {
@@ -142,8 +156,17 @@ const toggleNavbar = () => {
   right: 1180px;
   width: 900px;
 bottom: 30px;
+
   }
-  
+  .change-logout{
+    background-color:#1C0233 ;
+    border: none;
+    margin-bottom: 10px;
+    margin-right: 18px;
+    font-size: 14px;
+    color: white;
+    pointer-events: none;
+  }
   .task-list {
     display: grid;
     gap: 15px;

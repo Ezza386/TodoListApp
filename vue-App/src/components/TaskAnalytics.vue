@@ -29,20 +29,19 @@
         <span class="user-name">  {{ loggedInUserFirstName }}</span>
         <el-menu-item index="1">
 
-          <router-link to="/Home">
+          <router-link to="/">
             <el-icon  class="menu-item-text"><House /></el-icon>
             <span  class="menu-item-text">Home</span>
           </router-link>
           </el-menu-item>
           <el-menu-item index="2">
-            <router-link to="/MyTasks">
+            <router-link to="/my-tasks">
               <el-icon><CircleCheckFilled /></el-icon>
             <span>Add Todo</span>
             </router-link>
-            
           </el-menu-item>
           <el-menu-item index="2">
-            <router-link to="/Dashboard">
+            <router-link to="/dashboard">
             <el-icon><Menu /></el-icon>
 
             <span>Dashboard</span>
@@ -50,7 +49,7 @@
           </el-menu-item>
           <el-menu-item-group title="Reporting">
               <el-menu-item index="3-1" >
-            <router-link to="/Analytics">
+            <router-link to="/analytics">
             <el-icon><Histogram /></el-icon>
             <span>Portfolios</span>
           </router-link>

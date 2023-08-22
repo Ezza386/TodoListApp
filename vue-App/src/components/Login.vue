@@ -21,10 +21,10 @@
 
           <el-form-item>
            
-             <el-button native-type="submit" type="primary"><router-link to="/MyTasks">Login</router-link></el-button>
+             <el-button native-type="submit" type="primary">Login</el-button>
           </el-form-item>
           <el-form-item>
-            <span class="member">Don't have an account? <router-link to="/SignUp" style="color: black;">SignUp</router-link></span>
+            <span class="member">Don't have an account? <router-link to="/sign-up" style="color: black;">SignUp</router-link></span>
           </el-form-item>
 
           </section>
@@ -65,7 +65,7 @@
           localStorage.setItem('loggedInUser', JSON.stringify(findUser));
 
        
-         router.push('/MyTasks');
+         router.push('/my-tasks');
          
         }
         else{
