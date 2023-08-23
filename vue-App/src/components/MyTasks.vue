@@ -1,86 +1,86 @@
 <template>
-<div> 
-<el-row class="tac">
- <el-col>
-    <div class="nav-container">  
-      <div class="top-navbar">
-       <el-icon style="width:100px" class="toggle-button" @click="toggleNavbar" :class="{ 'button-closed': !isNavbarOpen }"><Expand /></el-icon>
-    <div class="fix">
-      <img src="logo-back.png" class="logo-back">
-    </div> 
-    </div>
-      <el-menu 
-      v-show="isNavbarOpen"
-        active-text-color="#ffd04b"
-        background-color="#1C0233"
-        class="el-menu-vertical-demo"
-        default-active="2"
-        text-color="#fff"
-        @open="handleOpen"
-        @close="handleClose">
-      <div class="user-info">
-        <img
-          src="ezza.jpg"
-          alt="User Image"
-          class="user-image"
-        />
-        
+<div>
+ <el-row class="tac">
+   <el-col >
+      <div class=" flex h-screen">  
+        <div class=" flex justify-end bg-[#efecf2] h-14 w-screen mb-32">
+          <el-icon  class=" mb-full bg-[#efecf2] cursor-pointer mr-[720px] mt-0.5" @click="toggleNavbar" :class="{ 'button-closed': !isNavbarOpen }"><Expand /></el-icon>
+      <div class="mr-44 bg-[#efecf2]"><img src="logo-back.png" class="relative left-36 w-[200px] h-[40px] mt-[10px]  " ></div> 
       </div>
-      <span class="user-name">  {{ loggedInUserFirstName }}</span>
-      <el-menu-item index="1">
-
-        <router-link to="/">
-          <el-icon  class="menu-item-text"><House /></el-icon>
-          <span  class="menu-item-text">Home</span>
-        </router-link>
-        </el-menu-item>
-        <el-menu-item index="2">
-          <router-link to="/my-tasks">
-            <el-icon><CircleCheckFilled /></el-icon>
-          <span>Add Todo</span>
-          </router-link>
+        <el-menu 
+        v-show="isNavbarOpen"
+          active-text-color="#ffd04b"
+          background-color="#1C0233"
+          class="el-menu-vertical-demo"
+          default-active="2"
+          text-color="#fff"
+          @open="handleOpen"
+          @close="handleClose"
+        >
+        <div class="flex items-center mr-5 p-2.5">
+          <img
+            src="ezza.jpg"
+            alt="User Image"
+            class="w-24 h-24 rounded-full ml-5"
+          />
           
-        </el-menu-item>
-        <el-menu-item index="2">
-          <router-link to="/dashboard">
-          <el-icon><Menu /></el-icon>
+        </div>
+        <span class="m-16 text-2xl font-semibold text-white">  {{ loggedInUserFirstName }}</span>
+        <el-menu-item index="1">
 
-          <span>Dashboard</span>
-        </router-link>
-        </el-menu-item>
-        <el-menu-item-group title="Reporting">
-            <el-menu-item index="3-1" >
-          <router-link to="/analytics">
-          <el-icon><Histogram /></el-icon>
-          <span>Portfolios</span>
-        </router-link>
-        </el-menu-item>
-        </el-menu-item-group>
+          <router-link to="/">
+            <el-icon  class="color-#fff"><House /></el-icon>
+            <span  class="color-#fff">Home</span>
+          </router-link>
+          </el-menu-item>
+          <el-menu-item index="2">
+            <router-link to="/my-tasks">
+              <el-icon><CircleCheckFilled /></el-icon>
+            <span>Add Todo</span>
+            </router-link>
+          </el-menu-item>
+          <el-menu-item index="2">
+            <router-link to="/dashboard">
+            <el-icon><Menu /></el-icon>
 
+            <span>Dashboard</span>
+          </router-link>
+          </el-menu-item>
+          <el-menu-item-group title="Reporting">
+              <el-menu-item index="3-1" >
+            <router-link to="/analytics">
+            <el-icon><Histogram /></el-icon>
+            <span>Portfolios</span>
+          </router-link>
+          </el-menu-item>
+          </el-menu-item-group>
 
-      </el-menu>
-    </div>
-    </el-col>
-  </el-row>
-</div>
-
-    <div class="container" style="max-width: 600px;">
-      <h1 class="logo-title">
-       
-      </h1>
-      <div class="input-fix">
-        <el-input v-model="taskInput" placeholder="Enter Todo" style="width: 500px; margin-top: 10px; margin-left: 30px;" />
-        <el-button @click="addTask" style="margin-left: 10px; margin-top: 10px; background-color: #1C0233; color: white;">Add Todo</el-button>
+     <!--     <el-menu-item index="4">
+            <el-icon><Aim /></el-icon>
+            <span>My Goals</span>
+          </el-menu-item>-->
+        </el-menu>
       </div>
-      <el-table :data="tableData" style="width: 100%">
+      </el-col>
+    </el-row>
+
+  </div>
+
+    <div class="  justify-center border border-gray-300 w-650 h-400 mt-20 relative right-0 left-[-850px] ">
+  
+      <div class="flex">
+        <el-input v-model="taskInput" placeholder="Enter Todo"  class="w-600 mt-6  ml-2 h-7" />
+        <el-button @click="addTask"  class="ml-2 mr-10 mt-6 text-white bg-color[]" style="background-color:#1C0233 ;" >Add Todo</el-button>
+      </div>
+      <el-table :data="tableData" class="w-full ">
         <el-table-column prop="task" label="Tasks" width="200">
           <template #default="scope">
             <div class="task-cell">
-              <span v-if="!scope.row.isEditing" class="task-text">{{ scope.row.task }}</span>
+              <span v-if="!scope.row.isEditing" class="ml-1">{{ scope.row.task }}</span>
               <el-input
                 v-else
                 v-model="scope.row.task"
-                style="width: 80%"
+               class="w-4/5"
               ></el-input>
             </div>
           </template>
@@ -88,7 +88,7 @@
         <el-table-column prop="status" label="Status" width="130">
           <template #default="scope">
           
-            <div :style="getStatusStyle(scope.row.status)" class="status-cell">
+            <div :style="getStatusStyle(scope.row.status)" >
              
               <el-button size="mini" @click="toggleStatus(scope.row)" :style="getStatusStyle(scope.row.status)" style="border: none;">
                 {{ scope.row.status }}
@@ -96,7 +96,7 @@
             </div>
           </template>
         </el-table-column>
-        <el-table-column prop="operations" label="Operations">
+        <el-table-column prop="operations" label="Operations" width="130">
   <template #default="scope">
     <el-button size="small" @click="handleEdit(scope.$index, scope.row)">
       <el-icon><Edit/></el-icon>
@@ -114,7 +114,7 @@
 </el-table-column>
 
       </el-table>
-      <div class="chart-container" style="width: 400px; height: 400px;">
+      <div class="text-center mt-20 w-[400px] h-[400px]" >
     <canvas id="taskChart"></canvas>
       </div>
 </div>
@@ -248,34 +248,7 @@ const toggleStatus = (task) => {
 </script>
   
 <style scoped>
-.input-fix{
-display: flex;
-}
-  .container {
-  justify-content:center;
-  margin-right: 190px;
-  margin-left: 100px;
-  border: 1px solid #ccc;
-  width: 600px;
-  height: 400px;
-  margin-top: 90px;
-  position: relative;
-  right: 1150px;
-}
 
-.chart-container {
-  text-align: center;
-  margin-top: 20px;
-}
-.task-text {
-  margin-left: 5px;
-}
-
-.nav-container{
-      display: flex;
-height: 100vh;
-
-  }
   .el-menu-vertical-demo {
 flex: 1;
 width: 180px;
@@ -285,37 +258,7 @@ position: fixed;
 top: 0;
 left: 0;
 }
-.menu-item-text {
-color: #fff; 
 
-}
-.user-info {
-  display: flex;
-  align-items: center;
-  margin-right: 20px;
-  padding: 10px;
-}
-.el-menu-item a,
-.el-menu-item-group__title a,
-.el-submenu__title a {
-  color: #fff;
-  text-decoration: none;
-  transition: color 0.3s, background-color 0.3s; 
-  background-color: transparent;
-}
-
-.el-menu-item a:hover,
-.el-menu-item-group__title a:hover,
-.el-submenu__title a:hover {
-  color: #ffd04b;
-  background-color: transparent;
-}
-.user-image {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
- margin-left: 20px;
-}
 
 .user-name {
   font-size: 20px;
@@ -331,27 +274,12 @@ color: #fff;
 }
 .button-closed{
   position: absolute;
-  right: 500px;
+  right: 450px;
   width: 200px;
   height: 60px;
+  background-color: #efecf2;
 }
-.top-navbar {
-  display: flex;
-  align-items: center;
-  justify-content:flex-end;
-  background-color: #efecf2; 
-  height: 60px; 
-  width: 1400px;
-  margin-bottom: 130px;
-}
-.logo-back{
-  width: 150px;
-  height: 30px;
-}
-.fix{
-  background-color: #efecf2; 
-  margin-right: 180px;
-}
+
 </style>
   
 

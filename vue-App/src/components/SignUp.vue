@@ -1,11 +1,11 @@
 <template>
-    <div class="registration-container">
-      <div class="registration-box">
-        <h1 class="logo-title">
-          <img src="logo.png" alt="" class="customized-logo" />
+    <div class="flex justify-center  ml-64 items-center min-h-screen w-[700px]">
+      <div class="w-900 p-50 bg-white rounded-lg shadow-md px-5">
+        <h1 class="text-center mb-20  ml-28">
+          <img src="logo.png" alt="" class="w-30 h-10 ml-10 items-center" />
         </h1>
         <el-form
-          class="registration-form"
+         
           :model="formData"
           :rules="rules"
           ref="form"
@@ -15,13 +15,13 @@
         <br>
        <el-row>
         <el-col :span="12">
-        <el-form-item prop="fname">
+        <el-form-item prop="fname" class="mb-4">
           <el-label>First Name</el-label>
           <el-input v-model="formData.fname"></el-input>
         </el-form-item>
       </el-col>
       <el-col :span="12" >
-        <el-form-item prop="bname"  class="Name-rows">
+        <el-form-item prop="bname"   class="ml-5">
           <el-label>Last Name</el-label>
           <el-input v-model="formData.bname" ></el-input>
         </el-form-item>
@@ -35,7 +35,7 @@
         </el-form-item>
         </el-col>
         <el-col :span="12">
-          <el-form-item  prop="web" class="Name-rows">
+          <el-form-item  prop="web"  class="ml-5">
             <el-label>Mobile Number</el-label>
           <el-input v-model="formData.web" ></el-input>
         </el-form-item>
@@ -51,7 +51,7 @@
           </el-col>
          <el-col :span="12">
           
-        <el-form-item label="" prop="cPassword" class="Name-rows">
+        <el-form-item label="" prop="cPassword"  class="ml-5">
           <el-label >Confirm Password</el-label>
           <el-input v-model="formData.cPassword"  type="password"></el-input>
         </el-form-item>
@@ -62,7 +62,7 @@
         <el-form-item>
           <el-button type="primary" native-type="submit" >Register</el-button>
        
-          <span class="member" style="display: flex;">  Already a member?  <router-link class="nav-link" to="/login" style="color: black;">Login</router-link></span>
+          <span class="flex" >  Already a member?  <router-link class="nav-link" to="/login" style="color: black;">Login</router-link></span>
     
         </el-form-item>
 
@@ -130,7 +130,7 @@
     </script>
     
     
-    <style>
+    <style scoped>
     .dot{
       color: rgb(105, 105, 255);
       font-size: 50px;

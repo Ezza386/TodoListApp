@@ -3,10 +3,10 @@
 <div>
  <el-row class="tac">
    <el-col >
-      <div class="nav-container">  
-        <div class="top-navbar">
-          <el-icon style="width:100px" class="toggle-button" @click="toggleNavbar" :class="{ 'button-closed': !isNavbarOpen }"><Expand /></el-icon>
-      <div class="fix"><img src="logo-back.png" class="logo-back"></div> 
+      <div class=" flex h-screen">  
+        <div class=" flex justify-end bg-[#efecf2] h-14 w-screen mb-32">
+          <el-icon  class="toggle-button mb-full bg-[#efecf2] cursor-pointer mr-[720px] mt-0.5" @click="toggleNavbar" :class="{ 'button-closed': !isNavbarOpen }"><Expand /></el-icon>
+      <div class="mr-44 bg-[#efecf2]"><img src="logo-back.png" class="relative left-36 w-[200px] h-[40px] mt-[10px]  " ></div> 
       </div>
         <el-menu 
         v-show="isNavbarOpen"
@@ -18,20 +18,20 @@
           @open="handleOpen"
           @close="handleClose"
         >
-        <div class="user-info">
+        <div class="flex items-center mr-5 p-2.5">
           <img
             src="ezza.jpg"
             alt="User Image"
-            class="user-image"
+            class="w-24 h-24 rounded-full ml-5"
           />
           
         </div>
-        <span class="user-name">  {{ loggedInUserFirstName }}</span>
+        <span class="m-16 text-2xl font-semibold text-white">  {{ loggedInUserFirstName }}</span>
         <el-menu-item index="1">
 
           <router-link to="/">
-            <el-icon  class="menu-item-text"><House /></el-icon>
-            <span  class="menu-item-text">Home</span>
+            <el-icon  class="color-#fff"><House /></el-icon>
+            <span  class="color-#fff">Home</span>
           </router-link>
           </el-menu-item>
           <el-menu-item index="2">
@@ -56,10 +56,14 @@
           </el-menu-item>
           </el-menu-item-group>
 
-     <!--     <el-menu-item index="4">
-            <el-icon><Aim /></el-icon>
-            <span>My Goals</span>
-          </el-menu-item>-->
+     <!--             <router-link to="/">
+            <el-menu-item index="4">
+              <div @click="Logout">
+            <el-icon><Back /></el-icon>
+            <el-button class="change-logout">Logout</el-button>
+          </div>
+</el-menu-item>
+          </router-link>-->
         </el-menu>
       </div>
       </el-col>
@@ -67,8 +71,8 @@
 
   </div>
  
-  <div class="chart-container" style="width: 400px; height: 400px; margin-top: 120px; justify-content:center;position: absolute;">
-    <h3 class='heading-fix'>Analysis</h3>
+  <div class="  ml-96  ml-auto mt-36 justify-center absolute pb-12 h-96 w-96">
+    <h3 class="justify-center pl-36 color-#1C0233">Analysis</h3>
     <canvas id="taskChart"></canvas>
     
  </div>
@@ -151,11 +155,7 @@ const calculateTaskStatuses = () => {
 </script>
 <style scoped>
 
-.nav-container{
-      display: flex;
-height: 100vh;
 
-  }
   .el-menu-vertical-demo {
 flex: 1;
 width: 180px;
@@ -165,83 +165,12 @@ position: fixed;
 top: 0;
 left: 0;
 }
-.menu-item-text {
-color: #fff; 
 
-}
-.user-info {
-  display: flex;
-  align-items: center;
-  margin-right: 20px;
-  padding: 10px;
-}
-.el-menu-item a,
-.el-menu-item-group__title a,
-.el-submenu__title a {
-  color: #fff;
-  text-decoration: none;
-  transition: color 0.3s, background-color 0.3s; 
-  background-color: transparent;
-}
-.chart-container{
-  padding-bottom: 50px;
-  margin-left: 430px;
-}
-.el-menu-item a:hover,
-.el-menu-item-group__title a:hover,
-.el-submenu__title a:hover {
-  color: #ffd04b;
-  background-color: transparent;
-}
-.user-image {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
- margin-left: 20px;
-}
-
-.user-name {
-  font-size: 20px;
-  font-weight: 700;
-  color: white;
-  margin-left: 60px;
-}
-.toggle-button {
-  border: none;
-  background-color: #efecf2; 
-  cursor: pointer;
-  margin-right: 850px;
-}
 .button-closed{
   position: absolute;
-  right: 500px;
+  right: 450px;
   width: 200px;
   height: 60px;
-}
-.top-navbar {
-  display: flex;
-  align-items: center;
-  justify-content:flex-end;
-  background-color: #efecf2; 
-  height: 60px; 
-  width: 1400px;
-  margin-bottom: 130px;
-}
-.logo-back{
-  width: 150px;
-  height: 30px;
-
- 
-}
-.fix{
-  background-color: #efecf2; 
-  margin-right: 180px;
-}.menu-item-text {
-color: #fff; 
-}
-h3{
-  justify-content: center;
-  padding-left: 140px;
-  color: #1C0233;
+  background-color: #efecf2;
 }
 </style>

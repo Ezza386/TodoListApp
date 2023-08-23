@@ -1,11 +1,11 @@
 <template>
-  <div class="page-container">
-  <el-row class="tac">
-   <el-col>
-      <div class="nav-container">  
-          <div class="top-navbar">
-      <el-icon style="width:100px" class="toggle-button" @click="toggleNavbar" :class="{ 'button-closed': !isNavbarOpen }"><Expand /></el-icon>
-      <div class="fix"><img src="logo-back.png" class="logo-back"></div> 
+<div>
+ <el-row class="tac">
+   <el-col >
+      <div class=" flex h-screen">  
+        <div class=" flex justify-end bg-[#efecf2] h-14 w-screen mb-32">
+          <el-icon  class="toggle-button mb-full bg-[#efecf2] cursor-pointer mr-[720px] mt-0.5" @click="toggleNavbar" :class="{ 'button-closed': !isNavbarOpen }"><Expand /></el-icon>
+      <div class="mr-44 bg-[#efecf2]"><img src="logo-back.png" class="relative left-36 w-[200px] h-[40px] mt-[10px]  " ></div> 
       </div>
         <el-menu 
         v-show="isNavbarOpen"
@@ -17,20 +17,20 @@
           @open="handleOpen"
           @close="handleClose"
         >
-        <div class="user-info">
+        <div class="flex items-center mr-5 p-2.5">
           <img
             src="ezza.jpg"
             alt="User Image"
-            class="user-image"
+            class="w-24 h-24 rounded-full ml-5"
           />
           
         </div>
-        <span class="user-name">  {{ loggedInUserFirstName }}</span>
+        <span class="m-16 text-2xl font-semibold text-white">  {{ loggedInUserFirstName }}</span>
         <el-menu-item index="1">
 
           <router-link to="/">
-            <el-icon  class="menu-item-text"><House /></el-icon>
-            <span  class="menu-item-text">Home</span>
+            <el-icon  class="color-#fff"><House /></el-icon>
+            <span  class="color-#fff">Home</span>
           </router-link>
           </el-menu-item>
           <el-menu-item index="2">
@@ -38,7 +38,6 @@
               <el-icon><CircleCheckFilled /></el-icon>
             <span>Add Todo</span>
             </router-link>
-            
           </el-menu-item>
           <el-menu-item index="2">
             <router-link to="/dashboard">
@@ -55,7 +54,8 @@
           </router-link>
           </el-menu-item>
           </el-menu-item-group>
-          <router-link to="/">
+
+            <router-link to="/">
             <el-menu-item index="4">
               <div @click="Logout">
             <el-icon><Back /></el-icon>
@@ -63,28 +63,27 @@
           </div>
 </el-menu-item>
           </router-link>
-         
-
         </el-menu>
       </div>
       </el-col>
     </el-row>
+
   </div>
    
-  <div class="content-container">
+  <div class="flex-1">
 
   
-    <div class="dashboard-container">
-      <h2 class="dashboard">Dashboard</h2>
-      <div class="task-list">
-        <div class="task" v-for="(task, index) in tasks" :key="index">
-            <div class="task-header" >
-           <span class="title-style">Project Title:</span>
+    <div class="  w-900  mt-20 relative right-0 left-[-1000px]">
+      <h2 class="text-slate-300 ">Dashboard</h2>
+      <div class="grid gap-15 max-h-[calc(100vh-100px)] overflow-y-auto">
+        <div class=" border border-gray-300 rounded-md p-10 bg-white shadow-md w-[800px] h-[170px]"  v-for="(task, index) in tasks" :key="index">
+            <div class="flex justify-between items-center mt-3" >
+           <span class="text-xs text-gray-600">Project Title:</span>
           </div>
-          <div class="task-header" >
-            <span class="task-title"> {{ task.task }}</span>
+          <div class="flex justify-between items-center mt-3" >
+            <span class="text-lg font-bold mb-40"> {{ task.task }}</span>
             <span
-              class="task-status"
+              class="text-sm text-white bg-gray-800 rounded-full py-2 px-3 mb-40"
               :style="{ backgroundColor: getStatusBackgroundColor(task.status) }"
             >
               {{ task.status }}
@@ -145,19 +144,7 @@ const Logout=()=>{
   
   <style scoped>
 
-.content-container {
-  flex: 1;
 
-
-}
-  .dashboard-container {
-  margin-top: 100px;
-  position: relative;
-  right: 1180px;
-  width: 900px;
-bottom: 30px;
-
-  }
   .change-logout{
     background-color:#1C0233 ;
     border: none;
@@ -167,56 +154,8 @@ bottom: 30px;
     color: white;
     pointer-events: none;
   }
-  .task-list {
-    display: grid;
-    gap: 15px;
-    max-height: calc(100vh - 100px);
-  overflow-y: auto;
-  }
-  .dashboard{
-    color: #ccc;
-    margin-bottom: 20px;
-  }
-  .task {
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    padding: 10px;
-    background-color: #fff;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5);
-    width: 800px;
-    height: 120px;
-  }
-  .title-style{
-    font-size: 12px;
-    
-    color: #777;
-  }
-  .task-header {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 20px;
-    align-items: center;
-  }
   
-  .task-title {
-    font-size: 18px;
-    font-weight: bold;
-    margin-bottom: 40px;
-  }
   
-  .task-status {
-    font-size: 14px;
-    color: #fff;
-   border-radius: 100%;
-    padding: 6px 12px;
-    margin-bottom: 40px;
-  }
-  
-.nav-container{
-      display: flex;
-height: 100vh;
-
-  }
   .el-menu-vertical-demo {
 flex: 1;
 width: 180px;
@@ -226,73 +165,13 @@ position: fixed;
 top: 0;
 left: 0;
 }
-.menu-item-text {
-color: #fff; 
 
-}
-.user-info {
-  display: flex;
-  align-items: center;
-  margin-right: 20px;
-  padding: 10px;
-}
-.el-menu-item a,
-.el-menu-item-group__title a,
-.el-submenu__title a {
-  color: #fff;
-  text-decoration: none;
-  transition: color 0.3s, background-color 0.3s; 
-  background-color: transparent;
-}
-
-.el-menu-item a:hover,
-.el-menu-item-group__title a:hover,
-.el-submenu__title a:hover {
-  color: #ffd04b;
-  background-color: transparent;
-}
-.user-image {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
- margin-left: 20px;
-}
-
-.user-name {
-  font-size: 20px;
-  font-weight: 700;
-  color: white;
-  margin-left: 60px;
-}
-.toggle-button {
-  border: none;
-  background-color: #efecf2; 
-  cursor: pointer;
-  margin-right: 850px;
-}
 .button-closed{
   position: absolute;
-  right: 500px;
+  right: 450px;
   width: 200px;
   height: 60px;
+  background-color: #efecf2;
 }
-.top-navbar {
-  display: flex;
-  align-items: center;
-  justify-content:flex-end;
-  background-color: #efecf2; 
-  height: 60px; 
-  width: 1400px;
-  margin-bottom: 130px;
-}
-.logo-back{
-  width: 150px;
-  height: 30px;
 
- 
-}
-.fix{
-  background-color: #efecf2; 
-  margin-right: 180px;
-}
   </style>

@@ -1,12 +1,13 @@
 <template>
-    <div class="login-container">
-      <div class="image-container">
-        <img src="analysis.png" alt="" class="analysis-image">
-        <p class="image-description">Start managing your tasks faster and better.</p>
+    <div class="flex fixed top-0 left-0 w-screen h-screen bg-cover bg-right">
+      <div class="flex justify-end items-center pr-16 relative">
+        <img src="analysis.png" alt="" class="w-96">
+        <p class="absolute bottom-0  text-black text-center text-base bg-white pl-2.5 pr-4 rounded-md mt-5">Start managing your tasks faster and better.</p>
       </div>
+     
 
-      <div class="login-form-container">
-        <el-form class="login-form" :model="formData" :rules="rules" ref="form" @submit.native.prevent="login">
+      <div class="flex-2 flex justify-center items-center px-5 bg-white bg-opacity-90 rounded-lg shadow-md ">
+        <el-form :model="formData" :rules="rules" ref="form" @submit.native.prevent="login">
           <h1>Welcome Back!</h1>
           <br>
           <section>
@@ -24,9 +25,8 @@
              <el-button native-type="submit" type="primary">Login</el-button>
           </el-form-item>
           <el-form-item>
-            <span class="member">Don't have an account? <router-link to="/sign-up" style="color: black;">SignUp</router-link></span>
+            <span class="text-black">Don't have an account? <router-link to="/sign-up" class="text-black">SignUp</router-link></span>
           </el-form-item>
-
           </section>
         </el-form>
       </div>
@@ -86,57 +86,8 @@
   </script>
   
 
-  <style>
+  <style scoped>
 
-  .login-container {
-    display: flex;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-
-    background-repeat: no-repeat;
-    background-position: right;
-    background-size: cover;
-  }
-  .member{
-    color: black;
-  }
-  .image-container {
-    flex: 1;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    padding-right: 60px; 
-    position: relative;
-  }
-  
-  .analysis-image {
-    width: 350px;
-  }
-  
-  .login-form-container {
-    flex: 2;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-    background-color: rgba(255, 255, 255, 0.9);
-    border-radius: 8px;
-    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
-  }
-  .image-description {
-  position: absolute;
- margin-top: 330px;
-
-  font-size: 16px;
-  color: black;
-  text-align: center;
-
-  padding: 10px 20px;
-  border-radius: 4px;
-}
 .el-button a,.el-form-item a{
   color: #fff;
   text-decoration: none;
