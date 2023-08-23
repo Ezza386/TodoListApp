@@ -71,7 +71,7 @@
 
   </div>
  
-  <div class="  ml-96  ml-auto mt-36 justify-center absolute pb-12 h-96 w-96">
+  <div class="  ml-[430px]  ml-auto mt-36 justify-center absolute pb-12 h-96 w-96">
     <h3 class="justify-center pl-36 color-#1C0233">Analysis</h3>
     <canvas id="taskChart"></canvas>
     

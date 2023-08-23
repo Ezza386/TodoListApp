@@ -6,7 +6,7 @@
       </div>
      
 
-      <div class="flex-2 flex justify-center items-center px-5 bg-white bg-opacity-90 rounded-lg shadow-md ">
+      <div class="flex-2 flex justify-center items-center px-5 bg-white bg-opacity-90 rounded-lg shadow-md w-1/2">
         <el-form :model="formData" :rules="rules" ref="form" @submit.native.prevent="login">
           <h1>Welcome Back!</h1>
           <br>
